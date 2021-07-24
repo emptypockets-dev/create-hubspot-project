@@ -34,3 +34,7 @@ MIT
 
 - Andrey Kondratyuk <andrey@fasterbetter.dev>
 - Message me if you'd like to contribute
+
+## Special Thanks
+
+A big thank you to [@dkundel](https://github.com/dkundel) for the starter code!
