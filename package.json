@@ -1,0 +1,32 @@
+{
+  "name": "@emptypockets-dev/create-project",
+  "version": "1.0.0",
+  "description": "A CLI to bootstrap Hubspot projects",
+  "main": "src/index.js",
+  "bin": {
+    "@emptypockets-dev/create-project": "bin/create-project",
+    "create-project": "bin/create-project"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "create-project"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "arg": "^5.0.0",
+    "chalk": "^4.1.1",
+    "esm": "^3.2.25",
+    "execa": "^5.1.1",
+    "inquirer": "^8.1.2",
+    "listr": "^0.14.3",
+    "ncp": "^2.0.0",
+    "pkg-install": "^1.0.0"
+  }
+}
