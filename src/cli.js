@@ -7,9 +7,11 @@ function parseArgumentsIntoOptions(rawArgs) {
     {
       '--git': Boolean,
       '--yes': Boolean,
+      '--boilerplate': Boolean,
       '--install': Boolean,
       '-g': '--git',
       '-y': '--yes',
+      '-b': '--boilerplate',
       '-i': '--install',
     },
     {
@@ -19,13 +21,14 @@ function parseArgumentsIntoOptions(rawArgs) {
   return {
     skipPrompts: args['--yes'] || false,
     git: args['--git'] || false,
-    template: args._[0],
+    boilerplate: args['--boilerplate'] || false,
+    template: 'javascript',
     runInstall: args['--install'] || false,
   };
 }
 
 async function promptForMissingOptions(options) {
-  const defaultTemplate = 'Javascript';
+  const defaultTemplate = 'javascript';
   if (options.skipPrompts) {
     return {
       ...options,
@@ -34,30 +37,31 @@ async function promptForMissingOptions(options) {
   }
 
   const questions = [];
-  if (!options.template) {
-    questions.push({
-      type: 'list',
-      name: 'template',
-      message: 'Please choose which project template to use',
-      choices: ['Javascript', 'Typescript'],
-      default: defaultTemplate,
-    });
-  }
-
   if (!options.git) {
     questions.push({
       type: 'confirm',
       name: 'git',
-      message: 'Initialize a git repository?',
-      default: false,
+      message: 'Should a git be initialized?',
+      default: true,
+    });
+  }
+
+  if (!options.boilerplate) {
+    questions.push({
+      type: 'confirm',
+      name: 'boilerplate',
+      message:
+        'Do you want to use the HubSpot CMS boilerplate as a starting point?',
+      default: true,
     });
   }
 
   const answers = await inquirer.prompt(questions);
   return {
     ...options,
-    template: options.template || answers.template,
+    template: 'javascript',
     git: options.git || answers.git,
+    boilerplate: options.boilerplate || answers.boilerplate,
   };
 }
 

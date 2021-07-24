@@ -14,8 +14,6 @@ const writeFile = promisify(fs.writeFile);
 const copy = promisify(ncp);
 const writeGitignore = promisify(gitignore.writeFile);
 
-const copy = promisify(ncp);
-
 async function copyTemplateFiles(options) {
   return copy(options.templateDirectory, options.targetDirectory, {
     clobber: false,
@@ -47,6 +45,16 @@ async function initGit(options) {
   });
   if (result.failed) {
     return Promise.reject(new Error('Failed to initalize git'));
+  }
+  return;
+}
+
+async function initHubspotBoilerplate(options) {
+  const result = await execa('npm', ['run', 'boilerplate'], {
+    cwd: options.targetDirectory,
+  });
+  if (result.failed) {
+    return Promise.reject(new Error('Failed to initalize HubSpot boilerplate'));
   }
   return;
 }
@@ -94,6 +102,11 @@ export async function createProject(options) {
         enabled: () => options.git,
       },
       {
+        title: 'Setup HubSpot boilerplate in /src',
+        task: () => initHubspotBoilerplate(options),
+        enabled: () => options.boilerplate,
+      },
+      {
         title: 'Install dependencies',
         task: () =>
           projectInstall({
@@ -111,6 +124,6 @@ export async function createProject(options) {
   );
 
   await tasks.run();
-  console.log('%s Project ready', chalk.green.bold('DONE'));
+  console.log('%s Project ready', chalk.green.bold('DONE!!!'));
   return true;
 }
