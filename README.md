@@ -11,6 +11,7 @@ Project setup includes:
 - CSSNano
 - Babel
 - Hubspot specific setup
+- Git
 
 ## Installation & Usage
 
@@ -21,6 +22,8 @@ npm install -g @hubspot/cli@latest
 
 # 2. npx uses the latest version
 npx create-hubspot-project
+# or pass --install to automatically install all dependencies
+npx create-hubspot-project --install
 
 # 3. connect your local project with Hubspot
 hs init
