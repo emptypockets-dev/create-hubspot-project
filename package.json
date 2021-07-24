@@ -1,6 +1,6 @@
 {
   "name": "create-hubspot-project",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A CLI to bootstrap Hubspot projects",
   "main": "src/index.js",
   "bin": {
@@ -14,7 +14,11 @@
   },
   "keywords": [
     "cli",
-    "create-hubspot-project"
+    "create-hubspot-project",
+    "webpack",
+    "postcss",
+    "babel",
+    "tailwindCSS"
   ],
   "files": [
     "bin/",

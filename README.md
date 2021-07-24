@@ -1,8 +1,16 @@
 # create-hubspot-project
 
-## Not ready yet. Do not use or share.
+CLI to bootstrap new Hubspot projects.
 
-🏗 Personal CLI to bootstrap new Hubspot projects
+Project setup includes:
+
+- Hubspot CMS boilerplate
+- Webpack
+- PostCSS
+- TailwindCSS
+- CSSNano
+- Babel
+- Hubspot specific setup
 
 ## Installation & Usage
 
