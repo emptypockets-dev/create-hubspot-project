@@ -1,11 +1,10 @@
 {
-  "name": "@emptypockets-dev/create-project",
-  "version": "1.0.0",
+  "name": "create-hubspot-project",
+  "version": "0.0.2",
   "description": "A CLI to bootstrap Hubspot projects",
   "main": "src/index.js",
   "bin": {
-    "@emptypockets-dev/create-project": "bin/create-project",
-    "create-project": "bin/create-project"
+    "create-hubspot-project": "bin/create-hubspot-project"
   },
   "publishConfig": {
     "access": "public"
@@ -15,7 +14,12 @@
   },
   "keywords": [
     "cli",
-    "create-project"
+    "create-hubspot-project"
+  ],
+  "files": [
+    "bin/",
+    "src/",
+    "templates/"
   ],
   "author": "",
   "license": "ISC",
