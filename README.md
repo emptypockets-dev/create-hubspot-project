@@ -15,7 +15,7 @@ Project setup includes:
 
 ## Installation & Usage
 
-The CLI is available as an 3NPM package so you don't need to clone anything in this repo. Use `npx` instead of `npm` to use the latest version without having to install anything extra. You can see more details about the npm package here: [https://www.npmjs.com/package/create-hubspot-project](https://www.npmjs.com/package/create-hubspot-project)
+The CLI is available as an NPM package so you don't need to clone anything in this repo. Use `npx` instead of `npm` to use the latest version without having to install anything extra. You can see more details about the npm package here: [https://www.npmjs.com/package/create-hubspot-project](https://www.npmjs.com/package/create-hubspot-project)
 
 ```bash
 
