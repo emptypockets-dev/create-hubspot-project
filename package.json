@@ -3,6 +3,10 @@
   "version": "0.1.1",
   "description": "A CLI to bootstrap Hubspot projects",
   "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emptypockets-dev/create-hubspot-project"
+  },
   "bin": {
     "create-hubspot-project": "bin/create-hubspot-project"
   },
