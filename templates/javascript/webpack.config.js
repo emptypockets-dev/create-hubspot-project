@@ -58,7 +58,7 @@ module.exports = ({ account, autoupload }) => ({
       account,
       autoupload,
       src: 'dist',
-      dest: 'your-theme-name-here-four',
+      dest: 'CMS Theme Boilerplate',
     }),
     new MiniCssExtractPlugin({
       filename: ({ chunk }) => {

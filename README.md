@@ -34,7 +34,7 @@ hs init
 
 ## Next steps
 
-- add `hubspot.config.yml` to .gitignore
+- update your HubSpot theme folder name in `webpack.config.js`
 - add `css/styles.css` to your `templates/layouts/base.html` file
 - Add `import "./module.css"` in `module.js` files if you want PostCSS to process them
 

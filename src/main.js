@@ -6,8 +6,8 @@ import Listr from 'listr';
 import ncp from 'ncp';
 import path from 'path';
 import { projectInstall } from 'pkg-install';
-import license from 'spdx-license-list/licenses/MIT';
 import { promisify } from 'util';
+import figlet from 'figlet';
 
 const access = promisify(fs.access);
 const writeFile = promisify(fs.writeFile);
@@ -31,14 +31,6 @@ async function createGitignore(options) {
   });
 }
 
-async function createLicense(options) {
-  const targetPath = path.join(options.targetDirectory, 'LICENSE');
-  const licenseContent = license.licenseText
-    .replace('<year>', new Date().getFullYear())
-    .replace('<copyright holders>', `${options.name} (${options.email})`);
-  return writeFile(targetPath, licenseContent, 'utf8');
-}
-
 async function initGit(options) {
   const result = await execa('git', ['init'], {
     cwd: options.targetDirectory,
@@ -47,6 +39,17 @@ async function initGit(options) {
     return Promise.reject(new Error('Failed to initalize git'));
   }
   return;
+}
+
+async function addToGitignore(options) {
+  const targetPath = path.join(options.targetDirectory, '.gitignore');
+  const ignoreContent = `# HubSpot
+hubspot.config.yml
+
+# Node
+node_modules
+`;
+  return writeFile(targetPath, ignoreContent, 'utf8');
 }
 
 async function initHubspotBoilerplate(options) {
@@ -89,20 +92,22 @@ export async function createProject(options) {
         task: () => copyTemplateFiles(options),
       },
       {
-        title: 'Create gitignore',
-        task: () => createGitignore(options),
-      },
-      {
-        title: 'Create License',
-        task: () => createLicense(options),
-      },
-      {
-        title: 'Initialize git',
+        title: 'Initialize empty Git repo',
         task: () => initGit(options),
         enabled: () => options.git,
       },
       {
-        title: 'Setup HubSpot boilerplate in /src',
+        title: 'Create .gitignore file',
+        task: () => createGitignore(options),
+        enabled: () => options.git,
+      },
+      {
+        title: 'Ignore Hubspot config files in Git',
+        task: () => addToGitignore(options),
+        enabled: () => options.git,
+      },
+      {
+        title: 'Build HubSpot CMS boilerplate in /src',
         task: () => initHubspotBoilerplate(options),
         enabled: () => options.boilerplate,
       },
@@ -124,6 +129,26 @@ export async function createProject(options) {
   );
 
   await tasks.run();
-  console.log('%s Project ready', chalk.green.bold('DONE!!!'));
+  console.log(chalk.green.bold('Your HubSpot project is ready!'));
+  console.log(chalk.blue.bold('-------------'));
+  console.log(chalk.blue.bold('To finish your unique setup:'));
+  console.log(chalk.blue.bold('-------------'));
+  console.log(
+    chalk.blue("1. run 'hs init' to connect your local folder to HubSpot")
+  );
+  console.log(
+    chalk.blue("2. update 'templates/layout/base.html' to include `styles.css`")
+  );
+  console.log(
+    chalk.blue(
+      "3. 'import ./module.css' in 'module.js' files to use PostCSS features"
+    )
+  );
+  console.log(
+    chalk.blue(
+      '4. update your HubSpot theme folder name in `webpack.config.js`'
+    )
+  );
+
   return true;
 }

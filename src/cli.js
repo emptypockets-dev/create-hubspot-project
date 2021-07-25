@@ -41,7 +41,7 @@ async function promptForMissingOptions(options) {
     questions.push({
       type: 'confirm',
       name: 'git',
-      message: 'Should a git be initialized?',
+      message: 'Do you want to initialize an empty Git repo?',
       default: true,
     });
   }
