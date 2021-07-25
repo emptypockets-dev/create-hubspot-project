@@ -15,6 +15,8 @@ Project setup includes:
 
 ## Installation & Usage
 
+The CLI is available as an 3NPM package so you don't need to clone anything in this repo. Use `npx` instead of `npm` to use the latest version without having to install anything extra. You can see more details about the npm package here: [https://www.npmjs.com/package/create-hubspot-project](https://www.npmjs.com/package/create-hubspot-project)
+
 ```bash
 
 # 1. first install the Hubspot CLI globally
@@ -32,9 +34,9 @@ hs init
 
 ## Next steps
 
-- add `hubspot.config.yml` file to .gitignore so that it doesn't get shared
-- add `css/styles.css` to your base layout
-- import `module.css` in `module.js` files if you want PostCSS to process them
+- add `hubspot.config.yml` to .gitignore
+- add `css/styles.css` to your `templates/layouts/base.html` file
+- Add `import "./module.css"` in `module.js` files if you want PostCSS to process them
 
 ## License
 
