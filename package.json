@@ -1,6 +1,6 @@
 {
   "name": "create-hubspot-project",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A CLI to bootstrap Hubspot projects",
   "main": "src/index.js",
   "bin": {
