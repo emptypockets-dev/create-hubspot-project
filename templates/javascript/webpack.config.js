@@ -13,15 +13,9 @@ const entryFiles = [
     },
   },
   {
-    entryFiles: glob.sync('./src/templates/*.js'),
-    outputName(item) {
-      return item.replace('./src/', '').replace('.js', '');
-    },
-  },
-  {
     entryFiles: ['./src/index.js'],
     outputName(item) {
-      return item.replace('./src/', 'js/').replace('.js', '');
+      return item.replace('./src/', 'js/').replace('index.js', 'main');
     },
   },
 ];
@@ -64,10 +58,16 @@ module.exports = ({ account, autoupload }) => ({
       account,
       autoupload,
       src: 'dist',
-      dest: 'your-theme-name-here-three',
+      dest: 'your-theme-name-here-four',
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: ({ chunk }) => {
+        if (chunk.name == 'js/main') {
+          return 'css/styles.css';
+        } else {
+          return `${chunk.name}.css`;
+        }
+      },
     }),
     new WrapperPlugin({
       test: /\.css$/,
@@ -81,6 +81,7 @@ module.exports = ({ account, autoupload }) => ({
         { from: 'src/images', to: 'images' },
         { from: 'src/modules', to: 'modules' },
         { from: 'src/templates', to: 'templates' },
+        { from: 'src/css', to: 'css' },
       ],
     }),
   ],

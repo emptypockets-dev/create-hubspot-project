@@ -27,7 +27,14 @@ npx create-hubspot-project --install
 
 # 3. connect your local project with Hubspot
 hs init
+
 ```
+
+## Next steps
+
+- add `hubspot.config.yml` file to .gitignore so that it doesn't get shared
+- add `css/styles.css` to your base layout
+- import `module.css` in `module.js` files if you want PostCSS to process them
 
 ## License
 

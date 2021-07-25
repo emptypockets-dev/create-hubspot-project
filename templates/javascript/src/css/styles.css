@@ -8,11 +8,6 @@ html {
     left top,
     right top,
     from(blue),
-    to(#f06d06)
+    to(purple)
   );
-}
-
-.conic-gradient {
-  background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
-  display: flex;
 }
