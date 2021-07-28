@@ -72,9 +72,11 @@ export async function createProject(options) {
 
   const fullPathName = new URL(import.meta.url).pathname;
   const templateDir = path.normalize(
-    fullPathName.substr(fullPathName.indexOf('/')),
-    '../../templates',
-    options.template.toLowerCase()
+    path.resolve(
+      fullPathName.substr(fullPathName.indexOf('/')),
+      '../../templates',
+      options.template.toLowerCase()
+    )
   );
   options.templateDirectory = templateDir;
 
