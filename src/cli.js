@@ -22,7 +22,7 @@ function parseArgumentsIntoOptions(rawArgs) {
     skipPrompts: args['--yes'] || false,
     git: args['--git'] || false,
     boilerplate: args['--boilerplate'] || false,
-    template: 'javascript',
+    template: args._[0],
     runInstall: args['--install'] || false,
   };
 }
@@ -37,6 +37,15 @@ async function promptForMissingOptions(options) {
   }
 
   const questions = [];
+  if (!options.template) {
+    questions.push({
+      type: 'list',
+      name: 'template',
+      message: 'Please choose which project template to use',
+      choices: ['javascript', 'typescript'],
+      default: defaultTemplate,
+    });
+  }
   if (!options.git) {
     questions.push({
       type: 'confirm',
@@ -59,7 +68,7 @@ async function promptForMissingOptions(options) {
   const answers = await inquirer.prompt(questions);
   return {
     ...options,
-    template: 'javascript',
+    template: options.template || answers.template,
     git: options.git || answers.git,
     boilerplate: options.boilerplate || answers.boilerplate,
   };
