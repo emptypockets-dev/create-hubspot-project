@@ -8,6 +8,7 @@ import path from 'path';
 import { projectInstall } from 'pkg-install';
 import { promisify } from 'util';
 import figlet from 'figlet';
+const os = require('os');
 
 const access = promisify(fs.access);
 const writeFile = promisify(fs.writeFile);
@@ -71,11 +72,16 @@ export async function createProject(options) {
   };
 
   const fullPathName = new URL(import.meta.url).pathname;
-  const templateDir = path.resolve(
-    fullPathName.substr(fullPathName.indexOf('/')),
+  let templateDir;
+  templateDir = path.resolve(
+    fullPathName,
     '../../templates',
     options.template.toLowerCase()
   );
+  // Fix path building for Windows
+  if (os.platform() == 'win32') {
+    templateDir = templateDir.replace(/^(\w:\\)(\w:\\)/, '$2');
+  }
   options.templateDirectory = templateDir;
 
   try {
