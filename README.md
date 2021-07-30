@@ -2,8 +2,6 @@
 
 CLI to bootstrap new Hubspot projects.
 
-Tested and works on Mac. In testing on Windows.
-
 Project setup includes:
 
 - Hubspot CMS boilerplate
