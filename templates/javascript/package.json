@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.14.8",
     "@hubspot/webpack-cms-plugins": "^3.0.6",
     "autoprefixer": "^10.3.1",
