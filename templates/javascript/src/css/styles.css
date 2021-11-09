@@ -2,12 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+$blue: #056ef0;
+{% set orange = '#ff4500' %}
+
 html {
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(blue),
-    to(purple)
-  );
+ background-color: {{ theme.global_colors.primary.color }};
 }
+
+h1 {
+  color: $blue;
+}
+
+h2 {
+  color: {{ orange }}
+}
+
+
+  

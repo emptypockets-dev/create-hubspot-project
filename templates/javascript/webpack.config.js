@@ -1,7 +1,10 @@
 const HubSpotAutoUploadPlugin = require('@hubspot/webpack-cms-plugins/HubSpotAutoUploadPlugin');
+/* PostCSS and HubL get along thanks to the work of BJ Szyjakowski. 
+Learn more: https://www.npmjs.com/package/@spingroup/postcss-hubl
+*/
+const HublClean = require('@spingroup/postcss-hubl/hubl-clean');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const WrapperPlugin = require('wrapper-webpack-plugin');
 const entryPlus = require('webpack-entry-plus');
 const glob = require('glob');
 
@@ -54,6 +57,7 @@ module.exports = ({ account, autoupload }) => ({
     ],
   },
   plugins: [
+    new HublClean(),
     new HubSpotAutoUploadPlugin({
       account,
       autoupload,
@@ -69,17 +73,13 @@ module.exports = ({ account, autoupload }) => ({
         }
       },
     }),
-    new WrapperPlugin({
-      test: /\.css$/,
-      header: '{% raw %} \n',
-      footer: '{% endraw %}',
-    }),
     new CopyWebpackPlugin({
       patterns: [
         { from: 'src/theme.json', to: 'theme.json' },
         { from: 'src/fields.json', to: 'fields.json' },
         { from: 'src/images', to: 'images' },
         { from: 'src/modules', to: 'modules' },
+        { from: 'src/sections', to: 'sections' },
         { from: 'src/templates', to: 'templates' },
         { from: 'src/css', to: 'css' },
       ],
