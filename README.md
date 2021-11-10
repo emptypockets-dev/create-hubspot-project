@@ -7,6 +7,12 @@ Project setup includes:
 - Hubspot CMS boilerplate
 - Webpack
 - PostCSS
+  - postcss-extend-rule
+  - postcss-advanced-variables
+  - postcss-preset-env
+  - postcss-atroot
+  - postcss-property-lookup
+  - postcss-nested
 - Spingroup/postcss-hubl
 - TailwindCSS
 - Babel

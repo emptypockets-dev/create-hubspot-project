@@ -1,9 +1,9 @@
-{# Tailwind CSS! #}
+{# Tailwind CSS! Uses JIT to keep files small #}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-{# SCSS Vars #}
+{# SCSS style vars from PostCSS #}
 $blue: #056ef0;
 
 {# HubL Vars #}
@@ -12,14 +12,26 @@ $blue: #056ef0;
 {# Everything from the theme files fields.json works! #}
 html {
  background-color: {{ theme.global_colors.primary.color }};
+ /* PostCSS plugins allow you to nest CSS like in SASS */
+  body {
+    color: black;
+  }
 }
 
+{# use SCSS style vars from PostCSS #}
 h1 {
   color: $blue;
 }
 
-h2 {
+{# use HubL vars #}
+h2 { 
   color: {{ orange }}
 }
 
-  
+{# override theme-overrides.css (ironically) #}
+h1,h2,h3,h4,h5,h6,td,tfoot,thead th, tfoot td {
+  color: inherit;
+}
+.button {
+  background-color: black;
+}
