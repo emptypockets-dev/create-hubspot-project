@@ -53,4 +53,4 @@ MIT
 A big thank you to [@dkundel](https://github.com/dkundel) for the starter code!
 
 Another big thank you to [BJ Szyjakowski](https://github.com/spingroup) for building a plugin
-that finally allows HubL to work with PostCSS.
+that finally allows HubL to work with PostCSS. If you want to be a HubSpot expert, read his [blog](https://devbeej.com).
