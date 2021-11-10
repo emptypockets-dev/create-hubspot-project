@@ -7,10 +7,10 @@ Project setup includes:
 - Hubspot CMS boilerplate
 - Webpack
 - PostCSS
+- Spingroup/postcss-hubl
 - TailwindCSS
-- CSSNano
 - Babel
-- Hubspot specific setup
+- Hubspot CMS Boilerplate
 - Git
 
 ## Installation & Usage
@@ -35,6 +35,7 @@ hs init
 ## Next steps
 
 - update your HubSpot theme folder name in `webpack.config.js`
+- rename your theme in theme.json unless you want to use the default "CMS Theme Boilerplate"
 - add `css/styles.css` to your `templates/layouts/base.html` file
 - Add `import "./module.css"` in `module.js` files if you want PostCSS to process them
 
@@ -50,3 +51,6 @@ MIT
 ## Special Thanks
 
 A big thank you to [@dkundel](https://github.com/dkundel) for the starter code!
+
+Another big thank you to [BJ Szyjakowski](https://github.com/spingroup) for building a plugin
+that finally allows HubL to work with PostCSS.

@@ -1,7 +1,7 @@
 {
   "name": "create-hubspot-project",
-  "version": "0.2.5",
-  "description": "A CLI to bootstrap Hubspot projects",
+  "version": "0.2.6",
+  "description": "A CLI to bootstrap Hubspot projects using all of the best tooling",
   "main": "src/index.js",
   "repository": {
     "type": "git",

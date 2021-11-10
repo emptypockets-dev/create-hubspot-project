@@ -1,10 +1,15 @@
+{# Tailwind CSS! #}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+{# SCSS Vars #}
 $blue: #056ef0;
+
+{# HubL Vars #}
 {% set orange = '#ff4500' %}
 
+{# Everything from the theme files fields.json works! #}
 html {
  background-color: {{ theme.global_colors.primary.color }};
 }
@@ -16,6 +21,5 @@ h1 {
 h2 {
   color: {{ orange }}
 }
-
 
   

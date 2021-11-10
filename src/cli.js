@@ -42,7 +42,7 @@ async function promptForMissingOptions(options) {
       type: 'list',
       name: 'template',
       message: 'Please choose which project template to use',
-      choices: ['javascript', 'typescript'],
+      choices: ['javascript'],
       default: defaultTemplate,
     });
   }

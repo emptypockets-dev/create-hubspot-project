@@ -155,6 +155,11 @@ export async function createProject(options) {
       '4. update your HubSpot theme folder name in `webpack.config.js`'
     )
   );
+  console.log(
+    chalk.blue(
+      "5. rename your theme in theme.json (or keep CMS Theme Boilerplate if you want—I won't tell you what to do!)"
+    )
+  );
 
   return true;
 }
