@@ -10,7 +10,6 @@ Project setup includes:
 - Spingroup/postcss-hubl
 - TailwindCSS
 - Babel
-- Hubspot CMS Boilerplate
 - Git
 
 ## Installation & Usage
